@@ -1,26 +1,432 @@
 @import "tailwindcss";
 
+/* ==========================================================================
+   ZESTER PRODUCT STUDIO - DESIGN SYSTEM
+   Shape lock:  radius 0 everywhere. Industrial, machined, no soft corners.
+   Accent lock: Zester Yellow #FFD400. One accent, whole site.
+   Theme:       dark default, light supported, prefers-color-scheme respected.
+   ========================================================================== */
+
+@theme {
+  --font-display: var(--font-archivo), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --radius-none: 0px;
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* --- Tokens: dark is the authored default ------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ground: #0b0b0c;
+  --ground-2: #121214;
+  --ground-3: #1a1a1d;
+  --ground-inset: #060607;
+
+  --line: rgba(237, 237, 234, 0.11);
+  --line-strong: rgba(237, 237, 234, 0.24);
+
+  --ink: #ededea;
+  --ink-2: #9d9d97;
+  --ink-3: #6b6b65;
+
+  --accent: #ffd400;
+  --accent-ink: #0b0b0c;
+  --accent-text: #ffd400;
+  --accent-dim: rgba(255, 212, 0, 0.14);
+
+  --grid-line: rgba(237, 237, 234, 0.055);
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --ground: #f4f1ec;
+  --ground-2: #eae6de;
+  --ground-3: #e0dbd1;
+  --ground-inset: #fbf9f6;
+
+  --line: rgba(17, 17, 20, 0.14);
+  --line-strong: rgba(17, 17, 20, 0.32);
+
+  --ink: #17171a;
+  --ink-2: #55554f;
+  --ink-3: #78786f;
+
+  --accent: #ffd400;
+  --accent-ink: #0b0b0c;
+  /* Yellow is never body text on a light ground. Deep amber keeps the hue
+     family while passing WCAG AA against #f4f1ec. */
+  --accent-text: #7a6000;
+  --accent-dim: rgba(255, 212, 0, 0.3);
+
+  --grid-line: rgba(17, 17, 20, 0.06);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --ground: #f4f1ec;
+    --ground-2: #eae6de;
+    --ground-3: #e0dbd1;
+    --ground-inset: #fbf9f6;
+    --line: rgba(17, 17, 20, 0.14);
+    --line-strong: rgba(17, 17, 20, 0.32);
+    --ink: #17171a;
+    --ink-2: #55554f;
+    --ink-3: #78786f;
+    --accent-text: #7a6000;
+    --accent-dim: rgba(255, 212, 0, 0.3);
+    --grid-line: rgba(17, 17, 20, 0.06);
+    color-scheme: light;
+  }
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ground: var(--ground);
+  --color-ground-2: var(--ground-2);
+  --color-ground-3: var(--ground-3);
+  --color-ground-inset: var(--ground-inset);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-text: var(--accent-text);
+  --color-accent-dim: var(--accent-dim);
+  --color-grid-line: var(--grid-line);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* --- Base --------------------------------------------------------------- */
+* {
+  border-color: var(--line);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "kern" 1, "liga" 1, "cv05" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Radius lock: nothing on this site is rounded. */
+button,
+input,
+select,
+textarea {
+  border-radius: 0;
+  font: inherit;
+}
+
+/* --- Typography primitives ---------------------------------------------- */
+
+/* Display: condensed grotesk, tight, machined. Width axis pulled in to 86
+   so long operational headlines hold two lines instead of four. */
+.t-display {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 86;
+  font-weight: 700;
+  letter-spacing: -0.028em;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+.t-display-wide {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 100;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+/* Technical metadata: the annotation layer of an engineering document. */
+.t-meta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.t-body {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.62;
+  color: var(--ink-2);
+  max-width: 62ch;
+}
+
+.t-lead {
+  font-family: var(--font-sans);
+  font-size: clamp(1.0625rem, 1.5vw, 1.3125rem);
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  color: var(--ink);
+  max-width: 46ch;
+}
+
+/* Numerals in technical positions align like a spec sheet. */
+.tnum {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Layout ------------------------------------------------------------- */
+.shell {
+  width: 100%;
+  max-width: 1560px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .shell {
+    padding-inline: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .shell {
+    padding-inline: 4rem;
+  }
+}
+
+/* Hairline rule used to separate real content groups, never as decoration. */
+.rule {
+  border-top: 1px solid var(--line);
+}
+
+/* --- Grain: fixed, pointer-events-none, never on a scrolling container --- */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.032;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Motion primitives (all gated on prefers-reduced-motion) ------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Signature interaction: primary actions fill from the left on hover, the way
+   a machine state advances. transform/opacity only. */
+.act {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition: color 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.act::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.act:hover::before,
+.act:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.act:active {
+  transform: translateY(1px);
+}
+
+/* Scanline sweep used only on the live system readout, where it signals that
+   the WebGL scene is actually running. */
+@keyframes sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* --- Problem diagrams ---------------------------------------------------
+   Four small mechanisms, each drawing the specific failure it names. These
+   are diagrams, not ornament: the loop never exits, the systems never
+   connect, the signal always arrives late, the part never seats.
+   ----------------------------------------------------------------------- */
+
+@keyframes dg-loop {
+  to {
+    motion-offset: 100%;
+    offset-distance: 100%;
+  }
+}
+
+@keyframes dg-reach {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(var(--reach, 6px));
+  }
+  70% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes dg-late {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes dg-flash {
+  0%,
+  62% {
+    opacity: 0.25;
+  }
+  66%,
+  74% {
+    opacity: 1;
+  }
+  78%,
+  100% {
+    opacity: 0.25;
+  }
+}
+
+@keyframes dg-drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(var(--drift, 3px));
+  }
+}
+
+@keyframes dg-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.dg-path {
+  offset-path: var(--path);
+  offset-rotate: 0deg;
+}
+
+.dg-loop {
+  animation: dg-loop 3.6s linear infinite;
+}
+.dg-late {
+  animation: dg-late 3.2s cubic-bezier(0.45, 0, 0.9, 0.6) infinite;
+}
+.dg-flash {
+  animation: dg-flash 3.2s linear infinite;
+}
+.dg-reach {
+  animation: dg-reach 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+.dg-drift {
+  animation: dg-drift 4.2s ease-in-out infinite;
+}
+.dg-dash {
+  stroke-dasharray: 5 7;
+  animation: dg-dash 1.6s linear infinite;
+}
+
+/* --- Capability diagrams ------------------------------------------------ */
+
+@keyframes dg-scan {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(var(--scan, 26px));
+  }
+}
+
+@keyframes dg-pulse {
+  0%,
+  100% {
+    opacity: 0.28;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes dg-travel {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.dg-scan {
+  animation: dg-scan 3s ease-in-out infinite;
+}
+.dg-pulse {
+  animation: dg-pulse 2.2s ease-in-out infinite;
+}
+.dg-travel {
+  animation: dg-travel 4s linear infinite;
 }
