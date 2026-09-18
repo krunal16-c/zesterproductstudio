@@ -1,0 +1,233 @@
+<title>Zester Investor Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+*{box-sizing:border-box;border-radius:0!important;margin:0;padding:0}
+:root{
+--ground:#0b0b0c;--ground-2:#121214;--ground-3:#1a1a1d;
+--line:rgba(237,237,234,.11);--line-strong:rgba(237,237,234,.24);
+--ink:#ededea;--ink-2:#9d9d97;--ink-3:#6b6b65;
+--accent:#ffd400;--accent-ink:#0b0b0c;--accent-dim:rgba(255,212,0,.12);
+color-scheme:dark;}
+html,body{height:100%;background:var(--ground);color:var(--ink);
+font-family:'IBM Plex Sans',ui-sans-serif,system-ui,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.deck{height:100%;overflow:hidden;position:relative}
+.slide{position:absolute;inset:0;display:none;padding:6vh 7vw 11vh;overflow-y:auto}
+.slide.on{display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.18em;
+text-transform:uppercase;color:var(--ink-3);margin-bottom:20px}
+.eyebrow b{color:var(--accent);font-weight:400}
+h1{font-family:'Archivo','Arial Narrow',sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.0;
+font-size:clamp(34px,6.4vw,86px);text-wrap:balance;margin-bottom:22px}
+h2{font-family:'Archivo',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.05;
+font-size:clamp(26px,3.9vw,50px);text-wrap:balance;margin-bottom:24px}
+.lede{font-size:clamp(15px,1.55vw,21px);line-height:1.6;color:var(--ink-2);max-width:60ch}
+.lede strong{color:var(--ink);font-weight:600}
+.big{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(40px,7vw,92px);
+line-height:.95;letter-spacing:-.03em;color:var(--accent)}
+.rule{height:3px;width:56px;background:var(--accent);margin-bottom:26px;flex:none}
+.grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px}
+.g2{grid-template-columns:1fr}.g3{grid-template-columns:1fr}
+@media(min-width:880px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}}
+.cell{background:var(--ground);padding:22px 20px}
+.cell .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+text-transform:uppercase;color:var(--accent);margin-bottom:11px}
+.cell .v{font-size:15px;line-height:1.55;color:var(--ink-2)}
+.cell .v b{color:var(--ink);font-weight:600}
+.cell .n{font-family:'Archivo',sans-serif;font-weight:700;font-size:34px;line-height:1;
+color:var(--ink);margin-bottom:9px;letter-spacing:-.02em}
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:15px}
+th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+color:var(--ink-3);font-weight:400}
+td{color:var(--ink-2)} td b,td strong{color:var(--ink);font-weight:600}
+td.acc{color:var(--accent)}
+ul.plain{list-style:none;margin-top:22px}
+ul.plain li{padding:13px 0 13px 30px;border-bottom:1px solid var(--line);position:relative;
+font-size:16px;line-height:1.55;color:var(--ink-2)}
+ul.plain li::before{content:"";position:absolute;left:0;top:21px;width:14px;height:2px;background:var(--accent)}
+ul.plain li b{color:var(--ink);font-weight:600}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 22px;font-size:clamp(18px,2.3vw,30px);
+line-height:1.4;color:var(--ink);max-width:26ch;font-family:'Archivo',sans-serif;font-weight:500}
+.src{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-3);margin-top:16px;letter-spacing:.04em}
+.nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;
+padding:14px 7vw;border-top:1px solid var(--line);background:var(--ground);
+font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+.nav b{color:var(--accent);font-weight:400}
+.nav button{background:none;border:1px solid var(--line-strong);color:var(--ink-2);
+font-family:inherit;font-size:11px;letter-spacing:.13em;text-transform:uppercase;padding:6px 13px;cursor:pointer;margin-left:8px}
+.nav button:hover{background:var(--accent-dim);color:var(--accent)}
+.nav button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.bar{position:fixed;top:0;left:0;height:3px;background:var(--accent);transition:width .22s ease;z-index:5}
+@media(prefers-reduced-motion:reduce){.bar{transition:none}}
+
+</style>
+<div class="deck">
+<section class="slide" data-label="Zester Product Studio">
+
+<div class="rule"></div>
+<p class="eyebrow">Zester Product Studio &nbsp;/&nbsp; <b>Seed</b> &nbsp;/&nbsp; Ahmedabad, India</p>
+<h1>India has 10,500 factories that cannot buy the thing they need.</h1>
+<p class="lede">Industrial AI in India sells either a licence or a crore-scale programme. Between them sits every mid-market plant with a problem too specific for a product and too small for a consultancy. We build for that gap: two engineers, six weeks, one working system the plant owns.</p>
+
+</section>
+<section class="slide" data-label="The market shape">
+
+<p class="eyebrow">01 &nbsp;/&nbsp; Market structure</p>
+<h2>The market is a barbell. The middle is empty.</h2>
+<table>
+<tr><th></th><th>Product companies</th><th>Services firms</th></tr>
+<tr><td><b>Examples</b></td><td>Ripik.AI, Detect, SwitchOn, Infinite Uptime</td><td>LTTS, Tata Elxsi, Accenture Industry X</td></tr>
+<tr><td><b>Scale</b></td><td>Ripik Rs 23.5 Cr FY25. Detect Rs 46.4 Cr FY25 on $43M raised.</td><td>LTTS $1.23bn FY26, deals above $10M</td></tr>
+<tr><td><b>Constraint</b></td><td>Must build only what repeats across 100 plants</td><td>Deal floor near Rs 1 crore</td></tr>
+<tr><td class="acc"><b>Who serves the middle</b></td><td colspan="2" class="acc">Nobody. A search for embedded engineering in Indian manufacturing returns US agencies and no domestic equivalent.</td></tr>
+</table>
+<p class="lede" style="margin-top:26px">The category leaders' revenue is the tell. <strong>Rs 23.5 Cr after years of selling means the licence model is not reaching this market.</strong></p>
+
+</section>
+<section class="slide" data-label="The gap, quantified">
+
+<p class="eyebrow">02 &nbsp;/&nbsp; The opportunity</p>
+<div class="grid g4">
+  <div class="cell"><div class="n">10,500</div><div class="v">Drug manufacturing units in India. <b>~8,500 are MSME.</b></div></div>
+  <div class="cell"><div class="n">70%</div><div class="v">Of manufacturers have an AI initiative somewhere</div></div>
+  <div class="cell"><div class="n">1 in 3</div><div class="v">Ever gets past pilot into production</div></div>
+  <div class="cell"><div class="n">46%</div><div class="v">Of Indian MSMEs are <b>fully offline</b>, using no digital tool at all</div></div>
+</div>
+<p class="lede" style="margin-top:30px">The failure is not appetite and it is not awareness. It is that the two available purchase shapes both fail this buyer: a licence forces the plant to have an average problem, and a consultancy leaves before anything runs.</p>
+<p class="src">Sources: Pharmabiz Jun 2026 · ManufacturingTomorrow May 2026 · India SME Forum META Report Card 2025 (7,835 MSMEs)</p>
+
+</section>
+<section class="slide" data-label="Why now">
+
+<p class="eyebrow">03 &nbsp;/&nbsp; Timing</p>
+<h2>Three deadlines landed inside twelve months, each one a data problem with a price attached.</h2>
+<table>
+<tr><th>Trigger</th><th>Live from</th><th>What it forces</th></tr>
+<tr><td><b>CBAM definitive phase</b></td><td>1 Jan 2026</td><td>Exporters without verified plant-level emissions data are assigned EU defaults <b>30 to 80% above actual</b>. Penalty EUR 100 per tonne. GTRI estimates 15 to 22% price pressure on Indian steel and aluminium.</td></tr>
+<tr><td><b>New labour codes</b></td><td>21 Nov 2025</td><td>Overtime now pays <b>double</b>. Every hour of unplanned overtime costs twice what it did, doubling the return on any scheduling system.</td></tr>
+<tr><td><b>Time-of-day tariffs</b></td><td>Live, Maharashtra</td><td>20 to 30% discount in solar hours, <b>25% surcharge at evening peak</b>. Load shifting now has arithmetic payback.</td></tr>
+</table>
+<p class="lede" style="margin-top:24px">None of these are sentiment. Each has a date, a penalty and a budget line that is already defended.</p>
+
+</section>
+<section class="slide" data-label="The buyer's own words">
+
+<p class="eyebrow">04 &nbsp;/&nbsp; The insight</p>
+<div class="quote">"The consultant did a great pilot but did not have any idea about how to scale it."</div>
+<p class="src">PwC, Unlocking the AI Edge for MSMEs, March 2026</p>
+<p class="lede" style="margin-top:32px">The same study records the other two objections: <strong>vendor lock-in</strong> and <strong>hidden subscription costs</strong>. 91% of MSMEs say affordability decides adoption.</p>
+<p class="lede" style="margin-top:18px">Our engagement answers all three by construction. A fixed end date answers the first. Client ownership of the code answers the second and third. <strong>No licence business can copy the ownership clause without destroying its own model.</strong> That is a structural moat, not a feature.</p>
+
+</section>
+<section class="slide" data-label="What we sell">
+
+<p class="eyebrow">05 &nbsp;/&nbsp; The product</p>
+<h2>Six weeks, two engineers, one system in production.</h2>
+<div class="grid g2">
+  <div class="cell"><div class="k">Weeks 1 to 2 &nbsp;/&nbsp; Find</div><div class="v">Engineers on the floor with the client's people, on the client's data. Return with three candidate builds. The client picks one.</div></div>
+  <div class="cell"><div class="k">Weeks 3 to 6 &nbsp;/&nbsp; Build</div><div class="v">Into production, with the client's team alongside. They own the code, the hardware and the documentation.</div></div>
+</div>
+<p class="lede" style="margin-top:28px">Capability spans edge AI, computer vision, industrial IoT and applied software. The diagnosis phase exists because <strong>we do not assume we know which one a plant needs</strong>, which is exactly the assumption a product company is forced to make.</p>
+
+</section>
+<section class="slide" data-label="Unit economics">
+
+<p class="eyebrow">06 &nbsp;/&nbsp; The numbers</p>
+<h2>Subsidy-funded demand and a hard capacity ceiling.</h2>
+<div class="grid g4">
+  <div class="cell"><div class="n">Rs 8-15L</div><div class="v">Price per six-week sprint</div></div>
+  <div class="cell"><div class="n">65%</div><div class="v">Claimable under Gujarat Technology Acquisition, cap Rs 50L</div></div>
+  <div class="cell"><div class="n">Rs 4.2L</div><div class="v">Net cost to the plant on a Rs 12L sprint</div></div>
+  <div class="cell"><div class="n">6-8</div><div class="v">Engagements per year at two engineers, full utilisation</div></div>
+</div>
+<p class="lede" style="margin-top:28px">Two things follow. First, <strong>the state pays most of our invoice</strong>, which removes the affordability objection that 91% of MSMEs cite. Second, <strong>capacity is the ceiling, not demand</strong>. Revenue scales with engineers, and the case for funding is buying engineers and the proof that lets us charge more per sprint.</p>
+<p class="lede" style="margin-top:14px">A Rs 20 to 60 lakh mid-market ERP implementation is the price anchor already in the buyer's head. We sit deliberately below it.</p>
+
+</section>
+<section class="slide" data-label="Distribution">
+
+<p class="eyebrow">07 &nbsp;/&nbsp; Go to market</p>
+<h2>Clusters, not campaigns.</h2>
+<ul class="plain">
+  <li><b>Cluster density does the selling.</b> Peer learning is the documented strongest driver of MSME technology adoption in India. Land three plants in Ankleshwar and the fourth costs nothing to acquire.</li>
+  <li><b>Vendor Development Programmes.</b> Vibrant Gujarat puts Zydus, Lupin, GSFC, ONGC and ArcelorMittal procurement in one room for an afternoon at near-zero cost.</li>
+  <li><b>Estate association seminars.</b> Ankleshwar, Vapi, Vatva, Dahej, Panoli. Plant heads attend because it is free and twenty minutes away.</li>
+  <li><b>Government empanelment.</b> MSME LEAN places our engineers inside four to ten factories under a state mandate. Poor revenue, exceptional access.</li>
+  <li><b>Founder-led outbound.</b> 80 researched leads across 19 accounts are in flight now, with per-person triggers and a five-touch sequence.</li>
+</ul>
+
+</section>
+<section class="slide" data-label="Where we are">
+
+<p class="eyebrow">08 &nbsp;/&nbsp; Honest status</p>
+<h2>Pre-revenue. Here is exactly what exists.</h2>
+<table>
+<tr><th>Built</th><th>Not yet</th></tr>
+<tr><td><b>10 systems shipped</b>, six with measured figures. SafetyFirst predicts incidents 7 days out. Glaucon cut prep time 60%.</td><td class="acc"><b>Zero paying clients.</b> The ten are our own builds and we do not present them as client work.</td></tr>
+<tr><td><b>80-lead outbound engine</b> live across 19 accounts, with verified triggers and a full sequence.</td><td class="acc"><b>Zero revenue.</b> First sprints not yet signed.</td></tr>
+<tr><td><b>Working capability</b> across edge AI, vision, IIoT, applied ML. Real deployments on IBM Watson, Google ADK, LangGraph.</td><td class="acc"><b>No case study.</b> The first one is the single highest-value asset we can produce.</td></tr>
+</table>
+<p class="lede" style="margin-top:24px">We would rather show you this slide than have you find it later.</p>
+
+</section>
+<section class="slide" data-label="The path">
+
+<p class="eyebrow">09 &nbsp;/&nbsp; Next 12 months</p>
+<h2>Two sprints, one case study, then price power.</h2>
+<div class="grid g3">
+  <div class="cell"><div class="k">Days 1 to 90</div><div class="v"><b>2 paid sprints, 1 written case study.</b> Priced at or below cost, deliberately, to buy the reference.</div></div>
+  <div class="cell"><div class="k">Months 4 to 9</div><div class="v"><b>Cluster compounding.</b> First reference converts neighbours in the same estate. Price rises toward the top of the band.</div></div>
+  <div class="cell"><div class="k">Months 10 to 18</div><div class="v"><b>Capacity becomes the constraint.</b> Hire against a proven sprint model rather than a hypothesis.</div></div>
+</div>
+<p class="lede" style="margin-top:28px">The one number that matters in the next 90 days is <strong>two paid sprints and one case study.</strong> Not pipeline, not meetings, not conversations.</p>
+
+</section>
+<section class="slide" data-label="Risks">
+
+<p class="eyebrow">10 &nbsp;/&nbsp; What could kill this</p>
+<h2>The four we take seriously.</h2>
+<table>
+<tr><th>Risk</th><th>Why it is real</th><th>What we do about it</th></tr>
+<tr><td><b>Capacity ceiling</b></td><td>Two engineers is 6 to 8 sprints a year. Revenue does not compound without headcount.</td><td>Accepted. It is the reason for raising.</td></tr>
+<tr><td><b>A missed end date</b></td><td>The fixed deadline is the one promise competitors structurally cannot make. Missing it once removes our only differentiator.</td><td>Ship the smaller thing on time. Never extend.</td></tr>
+<tr><td><b>No repeatability</b></td><td>Bespoke work does not compound. Every sale is a fresh explanation.</td><td>Watched deliberately. If a pattern repeats across three sprints, we narrow into it.</td></tr>
+<tr><td><b>Procurement</b></td><td>Zero logos is fatal inside a formal tender process.</td><td>Sell to plant heads at a price inside their own authority. Refuse deals that reach procurement.</td></tr>
+</table>
+
+</section>
+<section class="slide" data-label="The ask">
+
+<div class="rule"></div>
+<p class="eyebrow">11 &nbsp;/&nbsp; What we want</p>
+<h1>Engineers, and the runway to buy the first three references.</h1>
+<p class="lede">Capacity is the ceiling and proof is the unlock. Funding buys both: engineers to raise annual sprint capacity beyond eight, and the runway to price the first three engagements at cost in exchange for the case studies that let us charge properly for the next thirty.</p>
+<p class="lede" style="margin-top:28px"><strong>Krunal Chavda</strong> &nbsp;/&nbsp; Founder, Zester Product Studio<br>partnerships@zesterproductstudio.com &nbsp;/&nbsp; zesterproductstudio.com</p>
+
+</section>
+</div>
+<div class="bar" id="bar"></div>
+<div class="nav">
+  <span id="lbl"></span>
+  <span><b id="cur">1</b> / <span id="tot"></span>
+  <button id="p">Prev</button><button id="n">Next</button></span>
+</div>
+<script>
+var S=[].slice.call(document.querySelectorAll('.slide')),i=0;
+document.getElementById('tot').textContent=S.length;
+function go(x){i=Math.max(0,Math.min(S.length-1,x));
+ S.forEach(function(s,k){s.classList.toggle('on',k===i)});
+ document.getElementById('cur').textContent=i+1;
+ document.getElementById('lbl').textContent=S[i].dataset.label||'';
+ document.getElementById('bar').style.width=((i+1)/S.length*100)+'%';
+ S[i].scrollTop=0;}
+document.getElementById('n').onclick=function(){go(i+1)};
+document.getElementById('p').onclick=function(){go(i-1)};
+document.addEventListener('keydown',function(e){
+ if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1)}
+ if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+ if(e.key==='Home')go(0); if(e.key==='End')go(S.length-1);});
+go(0);
+</script>

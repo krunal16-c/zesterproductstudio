@@ -1,0 +1,270 @@
+<title>Zester Signature Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --ground:#0b0b0c; --ground-2:#121214; --ground-3:#1a1a1d;
+    --line:rgba(237,237,234,.11); --line-strong:rgba(237,237,234,.24);
+    --ink:#ededea; --ink-2:#9d9d97; --ink-3:#6b6b65;
+    --accent:#ffd400; --accent-text:#ffd400; --accent-dim:rgba(255,212,0,.14);
+    color-scheme:dark;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+      --ground:#f4f1ec; --ground-2:#eae6de; --ground-3:#e0dbd1;
+      --line:rgba(17,17,20,.14); --line-strong:rgba(17,17,20,.32);
+      --ink:#17171a; --ink-2:#55554f; --ink-3:#78786f;
+      --accent:#ffd400; --accent-text:#7a6000; --accent-dim:rgba(255,212,0,.3);
+      color-scheme:light;
+    }
+  }
+  :root[data-theme="light"] {
+    --ground:#f4f1ec; --ground-2:#eae6de; --ground-3:#e0dbd1;
+    --line:rgba(17,17,20,.14); --line-strong:rgba(17,17,20,.32);
+    --ink:#17171a; --ink-2:#55554f; --ink-3:#78786f;
+    --accent:#ffd400; --accent-text:#7a6000; --accent-dim:rgba(255,212,0,.3);
+    color-scheme:light;
+  }
+  * { box-sizing:border-box; border-radius:0 !important; }
+  body {
+    background:var(--ground); color:var(--ink);
+    font-family:'IBM Plex Sans',ui-sans-serif,system-ui,Helvetica,Arial,sans-serif;
+    margin:0; padding:0; -webkit-font-smoothing:antialiased;
+  }
+  .wrap { max-width:940px; margin:0 auto; padding:56px 28px 96px; }
+  .eyebrow {
+    font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:11px;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3);
+  }
+  h1 {
+    font-family:'Archivo','Arial Narrow',sans-serif; font-weight:700;
+    font-size:clamp(30px,5vw,46px); line-height:1.02; letter-spacing:-.02em;
+    margin:14px 0 0; text-wrap:balance; color:var(--ink);
+  }
+  .lede { color:var(--ink-2); font-size:15px; line-height:1.65; max-width:62ch; margin:16px 0 0; }
+  .rule { height:1px; background:var(--line); margin:44px 0 0; }
+  .accentrule { height:3px; width:56px; background:var(--accent); margin:0 0 26px; }
+  section { margin-top:44px; }
+  h2 {
+    font-family:'Archivo',sans-serif; font-weight:600; font-size:20px;
+    letter-spacing:-.01em; margin:0 0 6px; color:var(--ink);
+  }
+  .sub { color:var(--ink-2); font-size:14px; line-height:1.6; margin:0 0 20px; max-width:62ch; }
+  .grid { display:grid; grid-template-columns:1fr; gap:18px; }
+  @media (min-width:820px) { .grid.two { grid-template-columns:1fr 1fr; } }
+  .panel { border:1px solid var(--line); background:var(--ground-2); }
+  .panel-hd {
+    display:flex; justify-content:space-between; align-items:center; gap:12px;
+    padding:11px 14px; border-bottom:1px solid var(--line);
+    font-family:'IBM Plex Mono',monospace; font-size:11px;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3);
+  }
+  .inbox { background:#ffffff; padding:26px 24px; }
+  .inbox-note {
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em;
+    text-transform:uppercase; color:#9d9d97; padding:0 24px 14px; background:#fff;
+  }
+  pre {
+    margin:0; padding:16px 14px; overflow-x:auto; background:var(--ground-3);
+    font-family:'IBM Plex Mono',ui-monospace,monospace; font-size:12px;
+    line-height:1.65; color:var(--ink-2); white-space:pre; tab-size:2;
+  }
+  button.copy {
+    font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em;
+    text-transform:uppercase; background:transparent; color:var(--accent-text);
+    border:1px solid var(--line-strong); padding:5px 10px; cursor:pointer;
+  }
+  button.copy:hover { background:var(--accent-dim); }
+  button.copy:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+  table.spec { width:100%; border-collapse:collapse; font-size:14px; }
+  table.spec th, table.spec td {
+    text-align:left; padding:11px 12px; border-bottom:1px solid var(--line);
+    vertical-align:top; color:var(--ink-2); line-height:1.55;
+  }
+  table.spec th {
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--ink-3); font-weight:400; width:34%;
+  }
+  table.spec td strong { color:var(--ink); font-weight:600; }
+  ol.steps { margin:0; padding-left:0; list-style:none; counter-reset:s; }
+  ol.steps li {
+    counter-increment:s; position:relative; padding:0 0 16px 40px;
+    color:var(--ink-2); font-size:14px; line-height:1.6;
+  }
+  ol.steps li::before {
+    content:counter(s,decimal-leading-zero); position:absolute; left:0; top:1px;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--accent-text);
+    letter-spacing:.08em;
+  }
+  ol.steps li strong { color:var(--ink); font-weight:600; }
+  .no-list { margin:0; padding:0; list-style:none; }
+  .no-list li {
+    padding:9px 0 9px 22px; border-bottom:1px solid var(--line);
+    color:var(--ink-2); font-size:14px; line-height:1.55; position:relative;
+  }
+  .no-list li::before {
+    content:"\00d7"; position:absolute; left:0; top:8px; color:var(--ink-3); font-size:15px;
+  }
+  .no-list li strong { color:var(--ink); font-weight:600; }
+  code.inl {
+    font-family:'IBM Plex Mono',monospace; font-size:.9em;
+    background:var(--ground-3); padding:1px 5px; color:var(--ink);
+  }
+  footer { margin-top:52px; padding-top:22px; border-top:1px solid var(--line);
+    color:var(--ink-3); font-size:12.5px; line-height:1.6; }
+  @media (prefers-reduced-motion:reduce) { * { transition:none !important; } }
+</style>
+
+<div class="wrap">
+  <div class="accentrule"></div>
+  <p class="eyebrow">Zester Product Studio &nbsp;/&nbsp; Email identity</p>
+  <h1>Signature Kit</h1>
+  <p class="lede">Four signatures for Krunal Chavda, built on the Zester design system: one accent (<code class="inl">#FFD400</code>), zero radius, no images. Which one you use depends on who is receiving it.</p>
+
+  <div class="rule"></div>
+
+  <section>
+    <h2>Why this is short</h2>
+    <p class="sub">A signature is a credential, and credentials work by restraint. Logos, social icons, quotes and legal disclaimers read as junior corporate, and every image in a signature is one more thing to get blocked, stretched or turned into a phantom attachment. Founders and operating executives sign off in three or four lines. So does this.</p>
+    <table class="spec">
+      <tr><th>Accent</th><td><strong>#FFD400</strong> as a 3px machined rule. Never as body text on a light ground, which is your own system's rule; links drop to <strong>#7a6000</strong> so they pass contrast on cream and white.</td></tr>
+      <tr><th>Type</th><td>IBM Plex Sans for the name, IBM Plex Mono for contact data. Both degrade to Helvetica and Courier where the fonts are absent, which in email is most of the time.</td></tr>
+      <tr><th>Geometry</th><td>Radius 0 throughout, matching the shape lock on the site.</td></tr>
+      <tr><th>Images</th><td>None. No logo, no headshot, no tracking pixel. Pure HTML and text.</td></tr>
+    </table>
+  </section>
+
+  <section>
+    <h2>01 &nbsp;Cold outreach</h2>
+    <p class="sub">For the 80-lead campaign. Plain text, three lines, no hyperlink and no HTML at all. A link in a first cold email raises spam score, and a formatted block on a domain with no sending history looks like bulk mail. Use this until someone replies.</p>
+    <div class="panel">
+      <div class="panel-hd"><span>Plain text</span><button class="copy" data-t="cold">Copy</button></div>
+      <div class="inbox"><pre id="cold" style="background:#fff;color:#17171a;padding:0;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.7;">Krunal Chavda
+Zester Product Studio
++91 98765 43210</pre></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>02 &nbsp;Standard</h2>
+    <p class="sub">Once a conversation is live: replies to prospects who have answered, introductions, anything warm. This is the one that goes in Gmail's signature setting.</p>
+    <div class="grid two">
+      <div class="panel">
+        <div class="panel-hd"><span>Rendered</span></div>
+        <div class="inbox"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+  <tr>
+    <td style="border-left:3px solid #FFD400; padding:2px 0 2px 14px; font-family:'IBM Plex Sans',Archivo,Helvetica,Arial,sans-serif;">
+      <div style="font-size:15px; font-weight:600; color:#17171a; letter-spacing:-0.01em; line-height:1.3;">Krunal Chavda</div>
+      <div style="font-size:13px; color:#55554f; line-height:1.5; padding-top:1px;">Founder, Zester Product Studio</div>
+      <div style="font-family:'IBM Plex Mono',Consolas,'Courier New',monospace; font-size:12px; line-height:1.75; padding-top:10px;">
+        <a href="mailto:partnerships@zesterproductstudio.com" style="color:#55554f; text-decoration:none;">partnerships@zesterproductstudio.com</a><br>
+        <a href="tel:+919876543210" style="color:#55554f; text-decoration:none;">+91 98765 43210</a><br>
+        <a href="https://zesterproductstudio.com" style="color:#7a6000; text-decoration:none;">zesterproductstudio.com</a>
+      </div>
+    </td>
+  </tr>
+</table></div>
+        <p class="inbox-note">As it appears on a white inbox ground</p>
+      </div>
+      <div class="panel">
+        <div class="panel-hd"><span>HTML</span><button class="copy" data-t="full">Copy</button></div>
+        <pre id="full">&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;border-collapse:collapse;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td style=&quot;border-left:3px solid #FFD400; padding:2px 0 2px 14px; font-family:&#x27;IBM Plex Sans&#x27;,Archivo,Helvetica,Arial,sans-serif;&quot;&gt;
+      &lt;div style=&quot;font-size:15px; font-weight:600; color:#17171a; letter-spacing:-0.01em; line-height:1.3;&quot;&gt;Krunal Chavda&lt;/div&gt;
+      &lt;div style=&quot;font-size:13px; color:#55554f; line-height:1.5; padding-top:1px;&quot;&gt;Founder, Zester Product Studio&lt;/div&gt;
+      &lt;div style=&quot;font-family:&#x27;IBM Plex Mono&#x27;,Consolas,&#x27;Courier New&#x27;,monospace; font-size:12px; line-height:1.75; padding-top:10px;&quot;&gt;
+        &lt;a href=&quot;mailto:partnerships@zesterproductstudio.com&quot; style=&quot;color:#55554f; text-decoration:none;&quot;&gt;partnerships@zesterproductstudio.com&lt;/a&gt;&lt;br&gt;
+        &lt;a href=&quot;tel:+919876543210&quot; style=&quot;color:#55554f; text-decoration:none;&quot;&gt;+91 98765 43210&lt;/a&gt;&lt;br&gt;
+        &lt;a href=&quot;https://zesterproductstudio.com&quot; style=&quot;color:#7a6000; text-decoration:none;&quot;&gt;zesterproductstudio.com&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>03 &nbsp;Single line</h2>
+    <p class="sub">For long threads where the full block starts stacking up under every message, and for mobile. Same information, one row.</p>
+    <div class="grid two">
+      <div class="panel">
+        <div class="panel-hd"><span>Rendered</span></div>
+        <div class="inbox"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+  <tr>
+    <td style="font-family:'IBM Plex Sans',Helvetica,Arial,sans-serif; font-size:13px; color:#17171a;">
+      <strong style="font-weight:600;">Krunal Chavda</strong><span style="color:#9d9d97;"> &nbsp;|&nbsp; </span><span style="color:#55554f;">Founder, Zester Product Studio</span><span style="color:#9d9d97;"> &nbsp;|&nbsp; </span><a href="tel:+919876543210" style="color:#55554f; text-decoration:none;">+91 98765 43210</a>
+    </td>
+  </tr>
+</table></div>
+        <p class="inbox-note">As it appears on a white inbox ground</p>
+      </div>
+      <div class="panel">
+        <div class="panel-hd"><span>HTML</span><button class="copy" data-t="line">Copy</button></div>
+        <pre id="line">&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;border-collapse:collapse;&quot;&gt;
+  &lt;tr&gt;
+    &lt;td style=&quot;font-family:&#x27;IBM Plex Sans&#x27;,Helvetica,Arial,sans-serif; font-size:13px; color:#17171a;&quot;&gt;
+      &lt;strong style=&quot;font-weight:600;&quot;&gt;Krunal Chavda&lt;/strong&gt;&lt;span style=&quot;color:#9d9d97;&quot;&gt; &amp;nbsp;|&amp;nbsp; &lt;/span&gt;&lt;span style=&quot;color:#55554f;&quot;&gt;Founder, Zester Product Studio&lt;/span&gt;&lt;span style=&quot;color:#9d9d97;&quot;&gt; &amp;nbsp;|&amp;nbsp; &lt;/span&gt;&lt;a href=&quot;tel:+919876543210&quot; style=&quot;color:#55554f; text-decoration:none;&quot;&gt;+91 98765 43210&lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>04 &nbsp;Reply</h2>
+    <p class="sub">From the third message in a thread onward. One word. This is what people at the top of an organisation actually send, and it signals familiarity rather than formality.</p>
+    <div class="panel">
+      <div class="panel-hd"><span>Plain text</span><button class="copy" data-t="reply">Copy</button></div>
+      <div class="inbox"><pre id="reply" style="background:#fff;color:#17171a;padding:0;font-family:'IBM Plex Mono',monospace;font-size:13px;">Krunal</pre></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Installing in Gmail</h2>
+    <ol class="steps">
+      <li>Replace <strong>+91 98765 43210</strong> with your real number in whichever block you are using. It appears twice in the HTML: once in the <code class="inl">tel:</code> link and once as visible text.</li>
+      <li>Confirm <strong>partnerships@zesterproductstudio.com</strong> is the mailbox you actually created. If you went with a different local part, change it in the <code class="inl">mailto:</code> and the visible text.</li>
+      <li>Copy the HTML, then paste into <strong>Gmail → Settings → See all settings → General → Signature</strong>. Paste renders it; Gmail keeps the inline styles.</li>
+      <li>Set <strong>Signature defaults</strong> to use the standard block on new mail and <strong>no signature on replies</strong>, then paste the reply or single-line version manually when a thread runs long.</li>
+      <li>Send one test to a <strong>non-Google address</strong> and check the yellow rule survives. Outlook is the one that most often eats borders; if it does, the signature still reads correctly without it.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>What not to add</h2>
+    <ul class="no-list">
+      <li><strong>A logo image.</strong> Blocked by default in most clients, arrives as a phantom attachment in Outlook, and adds a spam signal on a young domain.</li>
+      <li><strong>Social icons.</strong> Nobody has ever clicked one in a signature. They read as marketing.</li>
+      <li><strong>A confidentiality disclaimer.</strong> Legally close to worthless on outbound mail and a reliable tell of a junior sender.</li>
+      <li><strong>"Sent from my iPhone" left on.</strong> Turn it off in the iOS mail settings.</li>
+      <li><strong>A quote or a tagline.</strong> Your positioning belongs in the email body, where it is being read.</li>
+      <li><strong>A booking link,</strong> at least until the campaign is producing replies. In a first cold email it is the single most common reason for a spam flag.</li>
+    </ul>
+  </section>
+
+  <footer>
+    Built on the Zester design system: Zester Yellow #FFD400 as the sole accent, radius 0, IBM Plex Sans and Mono. Contact details are placeholders until you swap them.
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll("button.copy").forEach(function(b){
+    b.addEventListener("click", function(){
+      var el = document.getElementById(b.dataset.t);
+      var txt = el.textContent;
+      var done = function(){ var o=b.textContent; b.textContent="Copied"; setTimeout(function(){b.textContent=o;},1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(txt).then(done, function(){ select(el); });
+      } else { select(el); }
+      function select(node){
+        var r=document.createRange(); r.selectNodeContents(node);
+        var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        try { document.execCommand("copy"); done(); } catch(e) { b.textContent="Select + copy"; }
+      }
+    });
+  });
+</script>

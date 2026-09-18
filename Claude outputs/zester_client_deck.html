@@ -1,0 +1,226 @@
+<title>Zester Client Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+*{box-sizing:border-box;border-radius:0!important;margin:0;padding:0}
+:root{
+--ground:#0b0b0c;--ground-2:#121214;--ground-3:#1a1a1d;
+--line:rgba(237,237,234,.11);--line-strong:rgba(237,237,234,.24);
+--ink:#ededea;--ink-2:#9d9d97;--ink-3:#6b6b65;
+--accent:#ffd400;--accent-ink:#0b0b0c;--accent-dim:rgba(255,212,0,.12);
+color-scheme:dark;}
+html,body{height:100%;background:var(--ground);color:var(--ink);
+font-family:'IBM Plex Sans',ui-sans-serif,system-ui,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.deck{height:100%;overflow:hidden;position:relative}
+.slide{position:absolute;inset:0;display:none;padding:6vh 7vw 11vh;overflow-y:auto}
+.slide.on{display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11px;letter-spacing:.18em;
+text-transform:uppercase;color:var(--ink-3);margin-bottom:20px}
+.eyebrow b{color:var(--accent);font-weight:400}
+h1{font-family:'Archivo','Arial Narrow',sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.0;
+font-size:clamp(34px,6.4vw,86px);text-wrap:balance;margin-bottom:22px}
+h2{font-family:'Archivo',sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.05;
+font-size:clamp(26px,3.9vw,50px);text-wrap:balance;margin-bottom:24px}
+.lede{font-size:clamp(15px,1.55vw,21px);line-height:1.6;color:var(--ink-2);max-width:60ch}
+.lede strong{color:var(--ink);font-weight:600}
+.big{font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(40px,7vw,92px);
+line-height:.95;letter-spacing:-.03em;color:var(--accent)}
+.rule{height:3px;width:56px;background:var(--accent);margin-bottom:26px;flex:none}
+.grid{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:30px}
+.g2{grid-template-columns:1fr}.g3{grid-template-columns:1fr}
+@media(min-width:880px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}}
+.cell{background:var(--ground);padding:22px 20px}
+.cell .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+text-transform:uppercase;color:var(--accent);margin-bottom:11px}
+.cell .v{font-size:15px;line-height:1.55;color:var(--ink-2)}
+.cell .v b{color:var(--ink);font-weight:600}
+.cell .n{font-family:'Archivo',sans-serif;font-weight:700;font-size:34px;line-height:1;
+color:var(--ink);margin-bottom:9px;letter-spacing:-.02em}
+table{width:100%;border-collapse:collapse;margin-top:26px;font-size:15px}
+th,td{text-align:left;padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+color:var(--ink-3);font-weight:400}
+td{color:var(--ink-2)} td b,td strong{color:var(--ink);font-weight:600}
+td.acc{color:var(--accent)}
+ul.plain{list-style:none;margin-top:22px}
+ul.plain li{padding:13px 0 13px 30px;border-bottom:1px solid var(--line);position:relative;
+font-size:16px;line-height:1.55;color:var(--ink-2)}
+ul.plain li::before{content:"";position:absolute;left:0;top:21px;width:14px;height:2px;background:var(--accent)}
+ul.plain li b{color:var(--ink);font-weight:600}
+.quote{border-left:3px solid var(--accent);padding:6px 0 6px 22px;font-size:clamp(18px,2.3vw,30px);
+line-height:1.4;color:var(--ink);max-width:26ch;font-family:'Archivo',sans-serif;font-weight:500}
+.src{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-3);margin-top:16px;letter-spacing:.04em}
+.nav{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;
+padding:14px 7vw;border-top:1px solid var(--line);background:var(--ground);
+font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+.nav b{color:var(--accent);font-weight:400}
+.nav button{background:none;border:1px solid var(--line-strong);color:var(--ink-2);
+font-family:inherit;font-size:11px;letter-spacing:.13em;text-transform:uppercase;padding:6px 13px;cursor:pointer;margin-left:8px}
+.nav button:hover{background:var(--accent-dim);color:var(--accent)}
+.nav button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.bar{position:fixed;top:0;left:0;height:3px;background:var(--accent);transition:width .22s ease;z-index:5}
+@media(prefers-reduced-motion:reduce){.bar{transition:none}}
+
+</style>
+<div class="deck">
+<section class="slide" data-label="Zester Product Studio">
+
+<div class="rule"></div>
+<p class="eyebrow">Zester Product Studio &nbsp;/&nbsp; <b>Engineering studio</b></p>
+<h1>We build AI that runs on factory floors, not in dashboards.</h1>
+<p class="lede">Two engineers inside your plant for six weeks. The first two weeks find the problem worth solving, with your people, on your data. The next four build it into production. You own what we leave.</p>
+
+</section>
+<section class="slide" data-label="The problem">
+
+<p class="eyebrow">01 &nbsp;/&nbsp; The starting point</p>
+<h2>Every plant has one problem everyone knows about and nobody has had time to fix.</h2>
+<div class="grid g4">
+  <div class="cell"><div class="k">Planning</div><div class="v">Changeover decisions made on experience. Schedules built on what the floor <b>said</b> happened.</div></div>
+  <div class="cell"><div class="k">Maintenance</div><div class="v">The machine gives warning long before it stops. Nothing is listening to it.</div></div>
+  <div class="cell"><div class="k">Knowledge</div><div class="v">The process lives with four people. Two of them retire within three years.</div></div>
+  <div class="cell"><div class="k">Quality</div><div class="v">A defect found a full cycle downstream of the step that caused it.</div></div>
+</div>
+<p class="lede" style="margin-top:30px">Identifying it was never the constraint. <strong>Your engineers are running the plant and cannot be pulled off it to go build the fix.</strong></p>
+
+</section>
+<section class="slide" data-label="Why it stays unfixed">
+
+<p class="eyebrow">02 &nbsp;/&nbsp; Why nothing gets built</p>
+<h2>The market sells you everything except the thing you need.</h2>
+<table>
+<tr><th>Who you can call</th><th>What they sell</th><th>Why it does not fit</th></tr>
+<tr><td><b>AI product companies</b></td><td>A licence, per plant, per year</td><td>They only build what repeats across a hundred plants. Your problem is specific to your line, so they cannot afford to solve it.</td></tr>
+<tr><td><b>Large services firms</b></td><td>Multi-year transformation programmes</td><td>Deals start around a crore. You get a roadmap, and the engineers who wrote it move on.</td></tr>
+<tr><td><b>Local automation houses</b></td><td>Panels, PLC, SCADA</td><td>Excellent at wiring a plant. They do not train models or build data pipelines.</td></tr>
+<tr><td class="acc"><b>Nobody</b></td><td class="acc">Two engineers, six weeks, one working system</td><td class="acc">This is the gap, and it is why we exist.</td></tr>
+</table>
+
+</section>
+<section class="slide" data-label="The objection">
+
+<p class="eyebrow">03 &nbsp;/&nbsp; What you have heard before</p>
+<div class="quote">"The consultant did a great pilot but did not have any idea about how to scale it."</div>
+<p class="src">PwC, Unlocking the AI Edge for MSMEs, March 2026</p>
+<p class="lede" style="margin-top:34px">You have probably said a version of this yourself. Around <strong>seven in ten manufacturers</strong> have an AI initiative running somewhere. About <strong>one in three</strong> ever gets past pilot into production.</p>
+<p class="lede" style="margin-top:18px">We built the engagement around not being that vendor.</p>
+
+</section>
+<section class="slide" data-label="The offer">
+
+<p class="eyebrow">04 &nbsp;/&nbsp; The engagement</p>
+<h2>Six weeks. Fixed price. Fixed end date.</h2>
+<div class="grid g2">
+  <div class="cell"><div class="k">Weeks 1 to 2 &nbsp;/&nbsp; Find</div><div class="v">Two of our engineers on your floor, with your people, on your data. We come back with the three problems worth building. <b>You pick one.</b></div></div>
+  <div class="cell"><div class="k">Weeks 3 to 6 &nbsp;/&nbsp; Build</div><div class="v">We build it and put it into production. Your team works beside us throughout, so they can run it after we go.</div></div>
+</div>
+<ul class="plain">
+  <li><b>You own everything.</b> The code, the hardware, the documentation. No licence, no subscription, no lock-in.</li>
+  <li><b>If week two shows there is nothing worth building, we say so and we stop.</b> You pay for two weeks and we part on good terms.</li>
+</ul>
+
+</section>
+<section class="slide" data-label="Four promises">
+
+<p class="eyebrow">05 &nbsp;/&nbsp; Why each clause exists</p>
+<h2>Every promise answers something specific that went wrong last time.</h2>
+<table>
+<tr><th>What we promise</th><th>What it answers</th></tr>
+<tr><td><b>A fixed end date</b></td><td>"We tried a vendor before and it never ended."</td></tr>
+<tr><td><b>You own the code and the hardware</b></td><td>"We will be locked into their subscription forever."</td></tr>
+<tr><td><b>Your team builds it with us</b></td><td>"Nobody here will know how to run it once they leave."</td></tr>
+<tr><td class="acc"><b>We will tell you to stop</b></td><td class="acc">"They will keep selling us things we do not need."</td></tr>
+</table>
+<p class="lede" style="margin-top:26px">The last one is the one no other vendor puts in writing. It was on our website before it was in this deck.</p>
+
+</section>
+<section class="slide" data-label="Evidence">
+
+<p class="eyebrow">06 &nbsp;/&nbsp; What we have built</p>
+<h2>Ten systems, built and run against real operational problems.</h2>
+<div class="grid g3">
+  <div class="cell"><div class="n">7 days</div><div class="k">SafetyFirst</div><div class="v">Predicts incident probability a week ahead from the register a plant already keeps. XGBoost, IBM Watson, FastAPI.</div></div>
+  <div class="cell"><div class="n">60%</div><div class="k">Glaucon</div><div class="v">Cut research preparation time for a government relations team. Multi-agent retrieval, entity resolution.</div></div>
+  <div class="cell"><div class="n">0 to 100</div><div class="k">RFQ Agent</div><div class="v">Watches public tender sources, scores each opportunity against fit, drafts the proposal. LangGraph, PostgreSQL.</div></div>
+</div>
+<p class="lede" style="margin-top:28px">These are our own builds, not client engagements, and we will not present them as anything else. We show them for one reason: <strong>they are evidence that two people ship working systems on a deadline.</strong></p>
+
+</section>
+<section class="slide" data-label="Price">
+
+<p class="eyebrow">07 &nbsp;/&nbsp; What it costs</p>
+<h2>Rs 8 to 15 lakh for six weeks. Most of it is claimable.</h2>
+<table>
+<tr><th>Scheme</th><th>Pays</th><th>Cap</th></tr>
+<tr><td><b>Gujarat Technology Acquisition</b></td><td class="acc">65% of cost</td><td>Rs 50 lakh</td></tr>
+<tr><td><b>Maharashtra MIISP 2025, Technology Upgradation</b></td><td class="acc">50% of capital equipment</td><td>Rs 25 lakh</td></tr>
+<tr><td><b>Gujarat Energy Conservation</b></td><td class="acc">75% of audit, 25% of equipment</td><td>Rs 20 lakh</td></tr>
+</table>
+<div class="grid g3" style="margin-top:28px">
+  <div class="cell"><div class="n">Rs 12L</div><div class="v">A typical six-week sprint</div></div>
+  <div class="cell"><div class="n">65%</div><div class="v">Claimable under Gujarat Technology Acquisition</div></div>
+  <div class="cell"><div class="n" style="color:var(--accent)">Rs 4.2L</div><div class="v"><b>Net cost to the plant.</b> Inside most plant heads' own authority.</div></div>
+</div>
+<p class="src">We confirm scheme eligibility for your unit before quoting a net figure. We do not quote net of a subsidy you have not been confirmed for.</p>
+
+</section>
+<section class="slide" data-label="Scope">
+
+<p class="eyebrow">08 &nbsp;/&nbsp; Where we work</p>
+<h2>Software and hardware, wherever the bottleneck turns out to be.</h2>
+<div class="grid g4">
+  <div class="cell"><div class="k">Edge intelligence</div><div class="v">AI running next to the machine rather than in a data centre. Keeps working when the connection drops.</div></div>
+  <div class="cell"><div class="k">Computer vision</div><div class="v">Cameras that already watch the line, read in real time instead of after the fact.</div></div>
+  <div class="cell"><div class="k">Industrial IoT</div><div class="v">Sensor and machine data pulled into something that predicts rather than logs.</div></div>
+  <div class="cell"><div class="k">Intelligent software</div><div class="v">The scheduling, documentation and reconciliation people currently do by hand.</div></div>
+</div>
+<p class="lede" style="margin-top:30px">We are deliberately not a vision company or a maintenance company. <strong>Weeks one and two exist because we do not assume we know which of these your plant needs.</strong></p>
+
+</section>
+<section class="slide" data-label="Next step">
+
+<div class="rule"></div>
+<p class="eyebrow">09 &nbsp;/&nbsp; The ask</p>
+<h1>An hour on your floor.</h1>
+<p class="lede">Not a demo and not a proposal. We walk the plant, you show us where the time goes, and we tell you what we would build. No charge, and nothing follows unless you ask for it.</p>
+<ul class="plain">
+  <li><b>If you have twelve months of historical data</b>, we will run our model against it at no cost and show you what it would have flagged. A week of our time, none of yours.</li>
+  <li><b>If we walk your floor and find nothing worth building</b>, we will tell you that instead of writing a proposal.</li>
+</ul>
+
+</section>
+<section class="slide" data-label="Contact">
+
+<div class="rule"></div>
+<h1>Bring us a real problem.</h1>
+<p class="lede"><strong>Krunal Chavda</strong> &nbsp;/&nbsp; Founder, Zester Product Studio<br>
+partnerships@zesterproductstudio.com<br>zesterproductstudio.com</p>
+<p class="lede" style="margin-top:30px;color:var(--ink-3)">We take on work where the operational problem is specific and the constraints are real. If it is not a fit, we say so rather than scheduling a call to find out slowly.</p>
+
+</section>
+</div>
+<div class="bar" id="bar"></div>
+<div class="nav">
+  <span id="lbl"></span>
+  <span><b id="cur">1</b> / <span id="tot"></span>
+  <button id="p">Prev</button><button id="n">Next</button></span>
+</div>
+<script>
+var S=[].slice.call(document.querySelectorAll('.slide')),i=0;
+document.getElementById('tot').textContent=S.length;
+function go(x){i=Math.max(0,Math.min(S.length-1,x));
+ S.forEach(function(s,k){s.classList.toggle('on',k===i)});
+ document.getElementById('cur').textContent=i+1;
+ document.getElementById('lbl').textContent=S[i].dataset.label||'';
+ document.getElementById('bar').style.width=((i+1)/S.length*100)+'%';
+ S[i].scrollTop=0;}
+document.getElementById('n').onclick=function(){go(i+1)};
+document.getElementById('p').onclick=function(){go(i-1)};
+document.addEventListener('keydown',function(e){
+ if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1)}
+ if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1)}
+ if(e.key==='Home')go(0); if(e.key==='End')go(S.length-1);});
+go(0);
+</script>

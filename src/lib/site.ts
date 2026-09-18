@@ -1,8 +1,8 @@
 export const SITE = {
   name: "Zester Product Studio",
   short: "Zester",
-  url: "https://zesterproducstudio.com",
-  email: "partnerships@zesterproducstudio.com",
+  url: "https://zesterproductstudio.com",
+  email: "partnerships@zesterproductstudio.com",
   positioning:
     "Zester Product Studio builds intelligent software and hardware products that improve how organizations operate.",
 } as const;

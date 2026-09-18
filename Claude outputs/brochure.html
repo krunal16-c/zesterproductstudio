@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Zester Product Studio — Brochure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0b0b0c;
+    --ink-soft:#33312e;
+    --paper:#f4f1ec;
+    --paper2:#e9e4d9;
+    --accent:#c1501f;
+    --muted:#726d63;
+    --rule: rgba(11,11,12,0.16);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{background:#d8d4cb;}
+  body{font-family:'Inter',ui-sans-serif,system-ui,sans-serif; -webkit-font-smoothing:antialiased;}
+  .sheet{
+    width:210mm; height:297mm;
+    background:var(--paper);
+    color:var(--ink);
+    position:relative;
+    overflow:hidden;
+    margin:0 auto 6mm auto;
+    padding:14mm 14mm 12mm 14mm;
+    display:flex;
+    flex-direction:column;
+  }
+  @media print{
+    body{background:var(--paper);}
+    .sheet{margin:0; box-shadow:none; page-break-after:always;}
+  }
+  .eyebrow{
+    font-size:7.6pt; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--accent);
+  }
+  .rule{ height:0.9pt; background:var(--rule); width:100%; }
+  .rule-strong{ height:1.3pt; background:var(--ink); width:100%; }
+
+  /* header */
+  .header{ display:flex; align-items:center; justify-content:space-between; padding-bottom:7mm; margin-bottom:9mm; border-bottom:1.1pt solid var(--ink); }
+  .brandmark{ display:flex; align-items:center; gap:4mm; }
+  .zbox{ width:9.5mm; height:9.5mm; background:var(--ink); color:var(--paper); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:13pt; flex-shrink:0; }
+  .brandtext .name{ font-weight:800; font-size:12.5pt; letter-spacing:0.04em; line-height:1; }
+  .brandtext .sub{ font-size:6.6pt; letter-spacing:0.18em; text-transform:uppercase; color:var(--muted); margin-top:1.2mm; }
+  .header-right{ text-align:right; font-size:7.6pt; color:var(--muted); letter-spacing:0.06em; }
+  .header-right .page{ font-weight:700; color:var(--ink); letter-spacing:0.1em; }
+
+  /* hero */
+  .hero h1{ font-size:38pt; font-weight:800; line-height:1.02; letter-spacing:-0.01em; margin-top:3mm; }
+  .hero h1 span{ color:var(--accent); }
+  .hero p{ font-size:10.6pt; line-height:1.5; color:var(--ink-soft); max-width:128mm; margin-top:5mm; }
+
+  .quote{
+    margin-top:8mm; padding-left:6mm; border-left:2.2pt solid var(--accent);
+    font-style:italic; font-size:13pt; line-height:1.38; max-width:150mm; color:var(--ink);
+  }
+
+  /* problem section */
+  .section-head{ margin-top:7mm; }
+  .section-head h2{ font-size:15pt; font-weight:800; margin-top:1.5mm; max-width:140mm; }
+  .section-head p{ font-size:8.6pt; color:var(--muted); margin-top:2.5mm; max-width:145mm; line-height:1.45; }
+
+  .grid4{ display:grid; grid-template-columns:1fr 1fr; gap:6mm 8mm; margin-top:6mm; }
+  .prob{ border-top:0.9pt solid var(--rule); padding-top:3mm; }
+  .prob .num{ font-size:9.5pt; font-weight:800; color:var(--accent); }
+  .prob .t{ font-size:9.6pt; font-weight:700; margin-top:1.5mm; }
+  .prob .d{ font-size:8pt; color:var(--muted); margin-top:1.2mm; line-height:1.4; }
+
+  /* capabilities */
+  .cap-grid{ display:grid; grid-template-columns:1fr 1fr; gap:6mm 8mm; margin-top:6mm; }
+  .cap{ padding-top:3mm; border-top:1.3pt solid var(--accent); }
+  .cap .t{ font-size:11pt; font-weight:800; }
+  .cap .d{ font-size:8.4pt; color:var(--muted); margin-top:1.6mm; line-height:1.45; }
+
+  .footer-strip{ margin-top:auto; padding-top:6mm; border-top:0.9pt solid var(--rule); display:flex; justify-content:space-between; align-items:flex-end; gap:8mm; }
+  .footer-strip p{ font-size:8pt; font-style:italic; color:var(--muted); max-width:150mm; line-height:1.45; }
+  .footer-strip .pg{ font-size:8pt; font-weight:700; color:var(--muted); white-space:nowrap; }
+
+  /* back page proof */
+  .stat-row{ display:flex; gap:14mm; margin-top:5mm; }
+  .stat{ }
+  .stat .n{ font-size:23pt; font-weight:900; color:var(--accent); line-height:1; }
+  .stat .l{ font-size:7.4pt; color:var(--muted); letter-spacing:0.04em; margin-top:1.3mm; max-width:34mm; line-height:1.25; }
+
+  .pgrid{ display:grid; grid-template-columns:1fr 1fr; gap:3.6mm 7mm; margin-top:5mm; }
+  .pcard{ background:var(--paper2); padding:3.6mm 5mm; min-height:25mm; display:flex; flex-direction:column; }
+  .pcard .cat{ font-size:6.2pt; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); }
+  .pcard .nm{ font-size:10pt; font-weight:800; margin-top:1.3mm; }
+  .pcard .ds{ font-size:7.4pt; color:var(--ink-soft); line-height:1.32; margin-top:1.4mm; flex-grow:1; }
+  .pcard .badge{ align-self:flex-start; margin-top:2mm; font-size:6.6pt; font-weight:700; color:var(--ink); background:transparent; border:0.9pt solid var(--ink); padding:1.1mm 2.4mm; letter-spacing:0.03em; }
+
+  .cta{ margin-top:auto; padding-top:5mm; border-top:1.3pt solid var(--ink); display:flex; justify-content:space-between; align-items:flex-end; }
+  .cta h3{ font-size:16pt; font-weight:800; max-width:110mm; line-height:1.12; }
+  .cta .contact{ text-align:right; font-size:8.2pt; line-height:1.5; }
+  .cta .contact .em{ font-weight:700; }
+  .cta .contact .site{ color:var(--muted); }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 — FRONT -->
+<div class="sheet" id="front">
+  <div class="header">
+    <div class="brandmark">
+      <div class="zbox">Z</div>
+      <div class="brandtext">
+        <div class="name">ZESTER</div>
+        <div class="sub">Product Studio</div>
+      </div>
+    </div>
+    <div class="header-right">
+      zesterproducstudio.com<br/>
+      <span class="page">01 / 02</span>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">Solve a Real Problem</div>
+    <h1>Build Better<br/>Operations<span>.</span></h1>
+    <p>We build intelligent software and hardware products that improve how organizations operate — for factory floors, government offices, and engineering teams.</p>
+  </div>
+
+  <div class="quote">
+    The future of AI isn't better conversations.<br/>It's better operations.
+  </div>
+
+  <div class="section-head">
+    <div class="eyebrow">Most software stops at the screen</div>
+    <p>Organizations don't need another impressive demo. They need technology that survives contact with the real world.</p>
+  </div>
+
+  <div class="grid4">
+    <div class="prob">
+      <div class="num">01</div>
+      <div class="t">Manual Work</div>
+      <div class="d">Workflows still depend on repetitive human effort.</div>
+    </div>
+    <div class="prob">
+      <div class="num">02</div>
+      <div class="t">Disconnected Systems</div>
+      <div class="d">Data exists across tools, machines, documents, and people.</div>
+    </div>
+    <div class="prob">
+      <div class="num">03</div>
+      <div class="t">Slow Decisions</div>
+      <div class="d">Critical information arrives too late.</div>
+    </div>
+    <div class="prob">
+      <div class="num">04</div>
+      <div class="t">Technology That Doesn't Fit</div>
+      <div class="d">Generic software rarely matches the way an organization actually operates.</div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <div class="eyebrow">What we build</div>
+    <h2>Products for real operations.</h2>
+  </div>
+
+  <div class="cap-grid">
+    <div class="cap">
+      <div class="t">Edge Intelligence</div>
+      <div class="d">AI running close to where work happens.</div>
+    </div>
+    <div class="cap">
+      <div class="t">Computer Vision</div>
+      <div class="d">Turn physical environments into measurable systems.</div>
+    </div>
+    <div class="cap">
+      <div class="t">Industrial IoT</div>
+      <div class="d">Connect machines, environments, and operational data.</div>
+    </div>
+    <div class="cap">
+      <div class="t">Intelligent Software</div>
+      <div class="d">Turn complex workflows into systems that execute, learn, and improve.</div>
+    </div>
+  </div>
+
+  <div class="footer-strip">
+    <p>From factory floors and government offices to engineering teams, we build systems that automate repetitive work, improve decision-making, and scale with your business.</p>
+  </div>
+</div>
+
+<!-- PAGE 2 — BACK -->
+<div class="sheet" id="back">
+  <div class="header">
+    <div class="brandmark">
+      <div class="zbox">Z</div>
+      <div class="brandtext">
+        <div class="name">ZESTER</div>
+        <div class="sub">Product Studio</div>
+      </div>
+    </div>
+    <div class="header-right">
+      partnerships@zesterproducstudio.com<br/>
+      <span class="page">02 / 02</span>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <div class="eyebrow">Proof of work</div>
+    <h2>Systems already running.</h2>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="n">10</div>
+      <div class="l">Products in the field</div>
+    </div>
+    <div class="stat">
+      <div class="n">6</div>
+      <div class="l">With measured, reported results</div>
+    </div>
+  </div>
+
+  <div class="pgrid">
+    <div class="pcard">
+      <div class="cat">Government Operations</div>
+      <div class="nm">Glaucon</div>
+      <div class="ds">A multi-agent government relations research system, built for teams whose decisions depend on knowing what policy is about to do.</div>
+      <div class="badge">60% reduction in prep time</div>
+    </div>
+    <div class="pcard">
+      <div class="cat">Workplace Operations</div>
+      <div class="nm">SafetyFirst</div>
+      <div class="ds">An OH&amp;S platform that predicts workplace incident probability over the next seven days, so prevention has somewhere specific to go.</div>
+      <div class="badge">7-day forward prediction</div>
+    </div>
+    <div class="pcard">
+      <div class="cat">Knowledge Operations</div>
+      <div class="nm">SkillsClaw</div>
+      <div class="ds">Turn recorded workflows and standard operating procedures into production-ready AI skill definitions that agents can actually run.</div>
+    </div>
+    <div class="pcard">
+      <div class="cat">Business Operations</div>
+      <div class="nm">RFQ Agent</div>
+      <div class="ds">A multi-agent procurement system that watches public tender sources, scores every opportunity against fit, and drafts the proposal.</div>
+      <div class="badge">0–100 LLM fit score</div>
+    </div>
+    <div class="pcard">
+      <div class="cat">Business Operations</div>
+      <div class="nm">Renzo</div>
+      <div class="ds">An AI-first engineering system that accelerates frontend delivery for services teams working across many concurrent client codebases.</div>
+    </div>
+    <div class="pcard">
+      <div class="cat">Research and Data</div>
+      <div class="nm">Iota</div>
+      <div class="ds">Personalised grant discovery that surfaces the funding opportunities a specific researcher is actually eligible for.</div>
+    </div>
+    <div class="pcard">
+      <div class="cat">Field Operations</div>
+      <div class="nm">WildTrack</div>
+      <div class="ds">Wildlife tracking and reporting that routes field observations to the authority responsible for acting on them.</div>
+      <div class="badge">2nd Prize, Eco Hack 2022</div>
+    </div>
+    <div class="pcard">
+      <div class="cat">Applied Interfaces</div>
+      <div class="nm">Aurora</div>
+      <div class="ds">A voice AI training tool that simulates donor conversations, so teams can practise the interaction before it costs them a relationship.</div>
+      <div class="badge">30% increase in conversions</div>
+    </div>
+    <div class="pcard">
+      <div class="cat">Applied Interfaces</div>
+      <div class="nm">FoodLens Agent</div>
+      <div class="ds">A restaurant photo enhancement agent: a dish photo goes in, marketing-ready imagery comes out.</div>
+      <div class="badge">6 style presets</div>
+    </div>
+    <div class="pcard">
+      <div class="cat">Applied Interfaces</div>
+      <div class="nm">Style Me Agent</div>
+      <div class="ds">AI hairstyle recommendation that reasons from face shape rather than from whatever is trending.</div>
+      <div class="badge">7 face shapes analysed</div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>Have a real operational problem? Let's solve it.</h3>
+    <div class="contact">
+      <div class="em">partnerships@zesterproducstudio.com</div>
+      <div class="site">zesterproducstudio.com</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
